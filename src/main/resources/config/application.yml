@@ -1,0 +1,173 @@
+spring:
+  datasource:
+#    url: jdbc:mysql://168.235.86.155:3306/admin_alseyahat?useLegacyDatetimeCode=false
+#    username: admin_alseyahat
+#    password: xFHeneCOoX
+#    url: jdbc:mysql://81.4.106.140:3306/abidmehboob_tourism?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+#    username: abidmehboob_app
+#    password: xFHeneCOoX
+    url: jdbc:mysql://localhost:3306/abidmehboob_tourism?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+    username: root
+    password: root
+    hikari:
+       connection-timeout: 60000
+       validation-timeout: 3000
+       idle-timeout: 30000
+       minimum-idle: 10
+       maximum-pool-size: 20
+       connection-test-query: SELECT 1
+
+  jpa:
+    show-sql: true
+    generate-ddl: false
+#    open-in-view: false
+    hibernate:
+      ddl-auto: update
+      able_lazy_load_no_trans: true
+    properties:
+      hibernate.dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+      hibernate.jdbc.batch_size: 1000 
+      jdbc:
+        time_zone: UTC
+      event:
+        merge:
+          entity_copy_observer: allow
+#    properties:
+#       hibernate.jdbc.batch_size: 1000 
+#      hibernate:
+#        enable_lazy_load_no_trans: true
+#        ddl-auto: update
+#        jdbc:
+#        time_zone: UTC
+#      event:
+#        merge:
+#          entity_copy_observer: allow
+#        event:
+#          merge:
+#            entity_copy_observer: allow
+    
+  main:
+    allow-bean-definition-overriding: true
+  mail:
+    default-encoding: UTF-8
+    host: p3plzcpnl493786.prod.phx3.secureserver.net
+    username: support@alseyahat.com
+    password: Tourtech1@
+    port: 465
+    properties:
+      mail:
+        smtp:
+          connectiontimeout: 2000
+          timeout: 2000
+          writetimeout: 2000
+          auth: true
+          starttls:
+            enable: false
+                
+    protocol: smtp
+#    test-connection: false
+
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 100MB
+      max-request-size: 100MB
+      
+  redis:
+    host: 3.15.218.126
+    port: 6379
+
+logging:
+  level:
+    org.zalando.logbook: TRACE
+
+logbook:
+  include:
+    - /**
+  exclude:
+    - /actuator/**
+    - /swagger-ui.html/**
+  filter.enabled: true
+  format.style: http
+  strategy: default
+  obfuscate:
+    parameters:
+      - access_token
+      - password
+      - token
+
+server:
+  port: 8085
+  #session:
+   # tracking-modes: cookie
+management:
+  server:
+    port: 8086
+  security:
+    enabled: false
+  endpoints:
+    web:
+      exposure:
+        include: health, metrics, info, prometheus, beans
+  endpoint:
+    health:
+      show-details: always
+
+http:
+  encryption:
+    enabled: false
+    aes-key: Z8DQJUY/k0iLFKCfl79jIcSZecHgsG22TgeWo99
+
+jwt:
+  employee:
+    clientId: employee
+    clientSecret: secret
+    accessTokenValiditySeconds: 604800
+    refreshTokenValiditySeconds: 604800
+  customer:
+    clientId: customer
+    clientSecret: secret
+    accessTokenValiditySeconds: 604800
+    refreshTokenValiditySeconds: 604800
+  security:
+    key-store: classpath:keystore.jks
+    key-store-password: letmein
+    key-pair-alias: mytestkey
+    key-pair-password: changeme
+feign:
+  client:
+    config:
+      AttachmentUploadFeignClient:
+        connectTimeout: 50000
+        readTimeout: 20000
+#app:
+#  firebase-configuration-file: fcm/planckly-2a17b-firebase-adminsdk-0wkbo-2b71d75e7d.json
+#  firebase-database-url: https://planckly-2a17b.firebaseio.com
+#  ios-certificate-path: classpath:apns/Certificates.p12
+#  ios-password: admin123
+  
+attachment:
+#  ip: 168.235.86.155
+#  user-name: root
+#  password: VnlJQlq1V0
+#  access-url: http://168.235.86.155/ 
+#  feign-url: http://168.235.86.155:8080/public_html/file_uploads/
+  ip: 168.235.86.155
+  user-name: alsyahat@alseyahat.com
+  password: Tourtech1@
+  access-url: ftp.candourtrader.com/
+  feign-url: ftp.candourtrader.com:21/public_html/file_uploads/
+  directory:
+    hotel-images: /home/a217aparoqom/public_html/alseyahat.com/alsyahat/file_uploads/hotel_images
+    sight-seeing-images: /home/a217aparoqom/public_html/alseyahat.com/alsyahat/file_uploads/sight_seeing_images
+    deal-images: /home/a217aparoqom/public_html/alseyahat.com/alsyahat/file_uploads/deal_images
+    customer-payment-images: /home/a217aparoqom/public_html/alseyahat.com/alsyahat/file_uploads/customer_payment_images
+    private-hired-images: /home/a217aparoqom/public_html/alseyahat.com/alsyahat/file_uploads/private_hired_images
+    
+
+loggin:
+  level:
+    com:
+      planckly:
+        shopping:
+          feature: FULL
