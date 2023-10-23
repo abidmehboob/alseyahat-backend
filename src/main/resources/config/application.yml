@@ -1,14 +1,18 @@
 spring:
   datasource:
+    url: jdbc:postgresql://dpg-ckrct4m2eoec73f2t80g-a.singapore-postgres.render.com:5432/alseyahat_db
+    username: alseyahat_db_user
+    password: 2HUEj4BSSDJ9cLWuOQxy9weT1U8V230o
+    driver-class: org.postgresql.Driver
 #    url: jdbc:mysql://168.235.86.155:3306/admin_alseyahat?useLegacyDatetimeCode=false
 #    username: admin_alseyahat
 #    password: xFHeneCOoX
 #    url: jdbc:mysql://81.4.106.140:3306/abidmehboob_tourism?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
 #    username: abidmehboob_app
 #    password: xFHeneCOoX
-    url: jdbc:mysql://localhost:3306/abidmehboob_tourism?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
-    username: root
-    password: root
+#    url: jdbc:mysql://localhost:3306/abidmehboob_tourism?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+#    username: root
+#    password: root
     hikari:
        connection-timeout: 60000
        validation-timeout: 3000
@@ -25,7 +29,7 @@ spring:
       ddl-auto: update
       able_lazy_load_no_trans: true
     properties:
-      hibernate.dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+      hibernate.dialect: org.hibernate.dialect.PostgreSQLDialect
       hibernate.jdbc.batch_size: 1000 
       jdbc:
         time_zone: UTC
