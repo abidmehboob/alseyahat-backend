@@ -1,11 +1,17 @@
 # Use an official Java 8 runtime as a parent image
-FROM openjdk:8-jre-alpine
+# Stage 1: Build the Spring Boot application with Maven
+FROM maven:3.8.4-openjdk-8 AS build
+WORKDIR /app
+COPY pom.xml .
+COPY src src/
+RUN mvn package -DskipTests
 
-# Set the working directory in the container
+# Stage 2: Create a lightweight runtime image
+FROM openjdk:8-jre-alpine
 WORKDIR /app
 
-# Copy the compiled Spring Boot application JAR file into the container at the specified location
-COPY target/alseyahat-0.0.1-SNAPSHOT.jar alseyahat-0.0.1-SNAPSHOT.jar
+# Copy the JAR file built in Stage 1 to the runtime image
+COPY --from=build /app/target/alseyahat-0.0.1-SNAPSHOT.jar alseyahat-0.0.1-SNAPSHOT.jar
 
 # Expose the port your Spring Boot application will listen on (adjust the port if necessary)
 EXPOSE 8085
