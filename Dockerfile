@@ -1,6 +1,8 @@
 # Use an official Java 8 runtime as a parent image
 # Stage 1: Build the Spring Boot application with Maven
 FROM maven:3.8.4-openjdk-8 AS build
+RUN rm -rf /usr/share/doc/*
+RUN rm -rf /usr/share/man/*
 WORKDIR /app
 COPY pom.xml .
 COPY src src/
