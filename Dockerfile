@@ -1,4 +1,4 @@
-FROM maven:3.8.4-openjdk-8
+FROM openjdk:8-jdk-alpine
 
 RUN rm -rf /usr/share/doc/*
 RUN rm -rf /usr/share/man/*
